@@ -22,7 +22,7 @@ ORDER BY 1;
 <hr>
 
 ### 2. How many days has each customer visited the restaurant?
-#### SQL Query
+#### a) SQL Query
 ````sql
 SELECT
   dds.customer_id,
@@ -32,8 +32,7 @@ FROM dannys_diner.sales AS dds
 GROUP BY 1
 ORDER BY 1;
 ````
-#### Answer
-
+#### b) Answer
 | customer_id | days_visited |
 | ----------- | ----------- |
 | A           | 4          |
@@ -42,7 +41,7 @@ ORDER BY 1;
 <hr>
 
 ### 3. What was the first item from the menu purchased by each customer?
-#### SQL Query
+#### a) SQL Query
 ````sql
 -- Temporary table for new column based on order date
 WITH temp_table AS (
@@ -65,7 +64,7 @@ FROM temp_table
 WHERE rank = 1
 GROUP BY 1, 2;
 ````
-#### Answer
+#### b) Answer
 
 | customer_id | product_name |
 | ----------- | ----------- |
