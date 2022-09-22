@@ -43,7 +43,36 @@ ORDER BY 1;
 
 ### 3. What was the first item from the menu purchased by each customer?
 #### SQL Query
+````sql
+-- Temporary table for new column based on order date
+WITH temp_table AS (
+
+SELECT
+	dds.customer_id,  
+  	dds.order_date,
+  	ddm.product_name,
+  	DENSE_RANK() OVER(PARTITION BY dds.customer_id 
+	ORDER BY dds.order_date) AS rank
+	FROM dannys_diner.sales AS dds
+  	JOIN dannys_diner.menu AS ddm
+  	ON dds.product_id = ddm.product_id
+)
+
+SELECT
+	customer_id,
+    product_name
+FROM temp_table
+WHERE rank = 1
+GROUP BY 1, 2;
+````
 #### Answer
+
+| customer_id | product_name |
+| ----------- | ----------- |
+| A           | curry          |
+| A           | sushi          |
+| B           | curry          |
+| C           | ramen          |
 <hr>
 
 ### 4. What is the most purchased item on the menu and how many times was it purchased by all customers?
