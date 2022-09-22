@@ -28,3 +28,5 @@ Danny has shared 3 key datasets for this case study:
 ## Bonus Questions
 - Join All The Things - Create new table  
 - Rank All The Things - Danny requires further information about the ranking of customer products
+## Solution
+To view my solution click here.
