@@ -1,7 +1,24 @@
 ## Case Study #1 - Danny's Diner - Solution
 ### 1. What is the total amount each customer spent at the restaurant?
-#### SQL Query
-#### Answer
+#### a) SQL Query
+````sql
+SELECT
+  dds.customer_id,
+  sum(ddm.price) as total_amount_spent
+FROM dannys_diner.sales AS dds
+JOIN dannys_diner.menu AS ddm 
+ON ddm.product_id = dds.product_id
+GROUP BY 1
+ORDER BY 1;
+````
+#### b) Answer
+
+| customer_id | total_amount_spent |
+| ----------- | ----------- |
+| A           | 76          |
+| B           | 74          |
+| C           | 36          |
+
 <hr>
 
 ### 2. How many days has each customer visited the restaurant?
