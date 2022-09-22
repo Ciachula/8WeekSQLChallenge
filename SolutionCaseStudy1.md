@@ -25,8 +25,8 @@ ORDER BY 1;
 #### SQL Query
 ````sql
 SELECT
-  	dds.customer_id,
-    count(distinct(dds.order_date)) as days_visited
+  dds.customer_id,
+  count(distinct(dds.order_date)) AS days_visited
 -- distinct to avoid repeating
 FROM dannys_diner.sales AS dds
 GROUP BY 1
