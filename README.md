@@ -29,4 +29,4 @@ Danny has shared 3 key datasets for this case study:
 - Join All The Things - Create new table  
 - Rank All The Things - Danny requires further information about the ranking of customer products
 ## Solution
-To view my solution click here.
+To view my solution click [here](https://github.com/Ciachula/8weekSQLchallenge-1/blob/main/SolutionCaseStudy1.md).
