@@ -23,7 +23,22 @@ ORDER BY 1;
 
 ### 2. How many days has each customer visited the restaurant?
 #### SQL Query
+````sql
+SELECT
+  	dds.customer_id,
+    count(distinct(dds.order_date)) as days_visited
+-- distinct to avoid repeating
+FROM dannys_diner.sales AS dds
+GROUP BY 1
+ORDER BY 1;
+````
 #### Answer
+
+| customer_id | days_visited |
+| ----------- | ----------- |
+| A           | 4          |
+| B           | 6          |
+| C           | 2          |
 <hr>
 
 ### 3. What was the first item from the menu purchased by each customer?
