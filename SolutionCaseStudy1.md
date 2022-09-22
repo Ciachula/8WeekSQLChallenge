@@ -7,7 +7,7 @@ SELECT
   sum(ddm.price) as total_amount_spent
 FROM dannys_diner.sales AS dds
 JOIN dannys_diner.menu AS ddm 
-ON ddm.product_id = dds.product_id
+	ON ddm.product_id = dds.product_id
 GROUP BY 1
 ORDER BY 1;
 ````
@@ -53,14 +53,14 @@ SELECT
   	ddm.product_name,
   	DENSE_RANK() OVER(PARTITION BY dds.customer_id 
 	ORDER BY dds.order_date) AS rank
-	FROM dannys_diner.sales AS dds
-  	JOIN dannys_diner.menu AS ddm
-  	ON dds.product_id = ddm.product_id
+FROM dannys_diner.sales AS dds
+JOIN dannys_diner.menu AS ddm
+	ON dds.product_id = ddm.product_id
 )
 
 SELECT
 	customer_id,
-    product_name
+    	product_name
 FROM temp_table
 WHERE rank = 1
 GROUP BY 1, 2;
