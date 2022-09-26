@@ -4,7 +4,7 @@
 ````sql
 SELECT
   dds.customer_id,
-  sum(ddm.price) as total_amount_spent
+  sum(ddm.price) AS total_amount_spent
 FROM dannys_diner.sales AS dds
 JOIN dannys_diner.menu AS ddm 
 	ON ddm.product_id = dds.product_id
@@ -204,8 +204,8 @@ SELECT
 	ddm2.join_date,
   	dds.order_date,
 	dds.product_id
-FROM dannys_diner.sales as dds
-JOIN dannys_diner.members as ddm2
+FROM dannys_diner.sales AS dds
+JOIN dannys_diner.members AS ddm2
 ON ddm2.customer_id = dds.customer_id
 WHERE ddm2.join_date > dds.order_date
   )
