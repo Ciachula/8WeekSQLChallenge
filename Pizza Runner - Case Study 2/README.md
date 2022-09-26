@@ -2,12 +2,10 @@
 [<img alt="sql2" width="450px" src="https://user-images.githubusercontent.com/31890259/192258788-fb4245bb-a6f2-4eb0-981a-abfad0850936.png" />](https://8weeksqlchallenge.com/case-study-2/)
 ## Problem Statement
 
-Danny wants to use the data to answer a few simple questions about his customers, especially about their visiting patterns, how much money they’ve spent and also which menu items are their favourite. 
+Danny started by recruiting “runners” to deliver fresh pizza from Pizza Runner Headquarters (otherwise known as Danny’s house). 
+Because Danny had a few years of experience as a data scientist - he was very aware that data collection was going to be critical for his business’ growth.
+He requires further assistance to clean his data and apply some basic calculations so he can better direct his runners and optimise Pizza Runner’s operations.
 
-Danny has shared 3 key datasets for this case study:
-- sales
-- menu
-- members
 ## Entity Relationship Diagram
 
 <img alt="sql2" width="520px" src="https://user-images.githubusercontent.com/31890259/192259095-553c3c29-323f-4772-b5ed-e412816a224b.PNG" />
