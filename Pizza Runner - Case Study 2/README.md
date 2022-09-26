@@ -14,7 +14,7 @@ Danny has shared 3 key datasets for this case study:
 
 ## Case Study Questions + Solution 
 
-### A. Pizza Metrics
+### A. Pizza Metrics - [Solution](https://github.com/Ciachula/8WeekSQLChallenge/blob/main/Pizza%20Runner%20-%20Case%20Study%202/Solution_A/solution.md)
 1. How many pizzas were ordered?
 2. How many unique customer orders were made?
 3. How many successful orders were delivered by each runner?
@@ -26,16 +26,13 @@ Danny has shared 3 key datasets for this case study:
 9. What was the total volume of pizzas ordered for each hour of the day?
 10. What was the volume of orders for each day of the week?
 
-B. Runner and Customer Experience
-How many runners signed up for each 1 week period? (i.e. week starts 2021-01-01)
-What was the average time in minutes it took for each runner to arrive at the Pizza Runner HQ to pickup the order?
-Is there any relationship between the number of pizzas and how long the order takes to prepare?
-What was the average distance travelled for each customer?
-What was the difference between the longest and shortest delivery times for all orders?
-What was the average speed for each runner for each delivery and do you notice any trend for these values?
-What is the successful delivery percentage for each runner?
+### B. Runner and Customer Experience - [Solution](https://github.com/Ciachula/8WeekSQLChallenge/blob/main/Pizza%20Runner%20-%20Case%20Study%202/Solution_B/solution.md)
+1. How many runners signed up for each 1 week period? (i.e. week starts 2021-01-01)
+2. What was the average time in minutes it took for each runner to arrive at the Pizza Runner HQ to pickup the order?
+3. Is there any relationship between the number of pizzas and how long the order takes to prepare?
+4. What was the average distance travelled for each customer?
+5. What was the difference between the longest and shortest delivery times for all orders?
+6. What was the average speed for each runner for each delivery and do you notice any trend for these values?
+7. What is the successful delivery percentage for each runner?
 
-
-## Solution
-To view my solution click [here](https://github.com/Ciachula/8WeekSQLChallenge/blob/main/Danny's%20Diner%20-%20Case%20Study%201/%20SolutionCaseStudy1.md).
 
