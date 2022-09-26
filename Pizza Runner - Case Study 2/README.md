@@ -1,5 +1,5 @@
 # Case Study #2 - Pizza Runner
-[<img alt="sql1" width="450px" src="https://user-images.githubusercontent.com/31890259/192258788-fb4245bb-a6f2-4eb0-981a-abfad0850936.png" />](https://8weeksqlchallenge.com/case-study-2/)
+[<img alt="sql2" width="450px" src="https://user-images.githubusercontent.com/31890259/192258788-fb4245bb-a6f2-4eb0-981a-abfad0850936.png" />](https://8weeksqlchallenge.com/case-study-2/)
 ## Problem Statement
 
 Danny wants to use the data to answer a few simple questions about his customers, especially about their visiting patterns, how much money they’ve spent and also which menu items are their favourite. 
@@ -10,7 +10,7 @@ Danny has shared 3 key datasets for this case study:
 - members
 ## Entity Relationship Diagram
 
-<img alt="sql1" width="520px" src="https://user-images.githubusercontent.com/31890259/191736178-1150cb81-9936-451f-b555-82c3f40ffb09.png" />
+<img alt="sql2" width="520px" src="https://user-images.githubusercontent.com/31890259/192259095-553c3c29-323f-4772-b5ed-e412816a224b.PNG" />
 
 ## Case Study Questions
 
