@@ -226,7 +226,32 @@ ORDER BY 1;
 
 ### 9. If each $1 spent equates to 10 points and sushi has a 2x points multiplier - how many points would each customer have?
 #### SQL Query
+````sql
+WITH temp_table AS (
+
+SELECT
+	*,
+  CASE 
+	WHEN ddm.product_id = 1 THEN ddm.price * 20
+	ELSE ddm.price * 10
+  	END AS score
+FROM dannys_diner.menu AS ddm
+
+  )
+
+SELECT dds.customer_id, SUM(tt.score) AS score
+FROM temp_table AS tt
+JOIN dannys_diner.sales AS dds
+ON tt.product_id = dds.product_id
+GROUP BY 1
+ORDER BY 1;
+````
 #### Answer
+| customer_id | score | 
+| ----------- | ----------- | 
+| A           | 860  | 
+| B           | 940  | 
+| C           | 360  |
 <hr>
 
 ### 10. In the first week after a customer joins the program (including their join date) they earn 2x points on all items, not just sushi - how many points do customer A and B have at the end of January
