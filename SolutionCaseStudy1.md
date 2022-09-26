@@ -163,7 +163,35 @@ ORDER BY 1;
 
 ### 7. Which item was purchased just before the customer became a member?
 #### SQL Query
+````sql
+WITH temp_table AS (
+
+SELECT
+  	dds.customer_id,
+	ddm2.join_date,
+  	dds.order_date,
+	dds.product_id,
+  	DENSE_RANK() OVER(PARTITION BY dds.customer_id 
+    ORDER BY dds.order_date DESC) as rank
+FROM dannys_diner.sales as dds
+JOIN dannys_diner.members as ddm2
+ON ddm2.customer_id = dds.customer_id
+WHERE ddm2.join_date > dds.order_date
+  )
+  
+SELECT tt.customer_id, tt.order_date, ddm.product_name
+FROM temp_table as tt
+JOIN dannys_diner.menu as ddm
+ON tt.product_id = ddm.product_id
+WHERE rank = 1
+ORDER BY 1;
+````
 #### Answer
+| customer_id | order_date | product_name |
+| ----------- | ----------- | ----------- |
+| A           | 2021-01-01  | sushi	|
+| A           | 2021-01-01  | curry  | 
+| B           | 2021-01-04  | sushi  | 
 <hr>
 
 ### 8. What is the total items and amount spent for each member before they became a member?
