@@ -256,5 +256,34 @@ ORDER BY 1;
 
 ### 10. In the first week after a customer joins the program (including their join date) they earn 2x points on all items, not just sushi - how many points do customer A and B have at the end of January
 #### SQL Query
+````sql
+-- SQL Server
+
+WITH temp_table AS 
+(
+   SELECT *, 
+      DATEADD(DAY, 6, ddm.join_date) AS valid_date, 
+      EOMONTH('2021-01-31') AS last_date
+   FROM dannys_diner.members AS ddm
+)
+
+SELECT tt.customer_id, dds.order_date, tt.join_date, tt.valid_date, tt.last_date, ddm.product_name, ddm.price,
+   SUM(CASE
+      WHEN ddm.product_name = 'sushi' THEN 2 * 10 * ddm.price
+      WHEN dds.order_date BETWEEN tt.join_date AND tt.valid_date THEN 2 * 10 * ddm.price
+      ELSE 10 * ddm.price
+      END) AS points
+FROM temp_table AS tt
+JOIN dannys_diner.sales AS dds
+   ON tt.customer_id = dds.customer_id
+JOIN dannys_diner.menu AS ddm
+   ON dds.product_id = ddm.product_id
+WHERE dds.order_date < tt.last_date
+GROUP BY tt.customer_id, dds.order_date, tt.join_date, tt.valid_date, tt.last_date, ddm.product_name, ddm.pric
+````
 #### Answer
+| customer_id | total_points | 
+| ----------- | ----------- | 
+| A           | 1370  | 
+| B           | 820  | 
 <hr>
