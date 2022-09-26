@@ -287,8 +287,10 @@ GROUP BY tt.customer_id, dds.order_date, tt.join_date, tt.valid_date, tt.last_da
 | A           | 1370  | 
 | B           | 820  | 
 <hr>
+
 ### BONUS - Join All The Things - Recreate the table with: customer_id, order_date, product_name, price, member (Y/N)
 #### SQL Query
+
 ````sql
 SELECT dds.customer_id, dds.order_date, ddm.product_name, ddm.price,
 	CASE WHEN ddm2.join_date > dds.order_date THEN 'N'
