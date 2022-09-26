@@ -12,21 +12,30 @@ Danny has shared 3 key datasets for this case study:
 
 <img alt="sql2" width="520px" src="https://user-images.githubusercontent.com/31890259/192259095-553c3c29-323f-4772-b5ed-e412816a224b.PNG" />
 
-## Case Study Questions
+## Case Study Questions + Solution 
 
-1. What is the total amount each customer spent at the restaurant?
-2. How many days has each customer visited the restaurant?
-3. What was the first item from the menu purchased by each customer?
-4. What is the most purchased item on the menu and how many times was it purchased by all customers?
-5. Which item was the most popular for each customer?
-6. Which item was purchased first by the customer after they became a member?
-7. Which item was purchased just before the customer became a member?
-8. What is the total items and amount spent for each member before they became a member?
-9. If each $1 spent equates to 10 points and sushi has a 2x points multiplier - how many points would each customer have?
-10. In the first week after a customer joins the program (including their join date) they earn 2x points on all items, not just sushi - how many points do customer A and B have at the end of January?
+### A. Pizza Metrics
+1. How many pizzas were ordered?
+2. How many unique customer orders were made?
+3. How many successful orders were delivered by each runner?
+4. How many of each type of pizza was delivered?
+5. How many Vegetarian and Meatlovers were ordered by each customer?
+6. What was the maximum number of pizzas delivered in a single order?
+7. For each customer, how many delivered pizzas had at least 1 change and how many had no changes?
+8. How many pizzas were delivered that had both exclusions and extras?
+9. What was the total volume of pizzas ordered for each hour of the day?
+10. What was the volume of orders for each day of the week?
 
-## Bonus Question
-- Join All The Things - Create new table  
+B. Runner and Customer Experience
+How many runners signed up for each 1 week period? (i.e. week starts 2021-01-01)
+What was the average time in minutes it took for each runner to arrive at the Pizza Runner HQ to pickup the order?
+Is there any relationship between the number of pizzas and how long the order takes to prepare?
+What was the average distance travelled for each customer?
+What was the difference between the longest and shortest delivery times for all orders?
+What was the average speed for each runner for each delivery and do you notice any trend for these values?
+What is the successful delivery percentage for each runner?
+
+
 ## Solution
 To view my solution click [here](https://github.com/Ciachula/8WeekSQLChallenge/blob/main/Danny's%20Diner%20-%20Case%20Study%201/%20SolutionCaseStudy1.md).
 
