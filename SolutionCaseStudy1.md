@@ -76,7 +76,21 @@ GROUP BY 1, 2;
 
 ### 4. What is the most purchased item on the menu and how many times was it purchased by all customers?
 #### SQL Query
+````sql
+SELECT
+  	ddm.product_name,
+  	count(dds.product_id) as purchase_count
+FROM dannys_diner.menu as ddm
+JOIN dannys_diner.sales as dds
+ON ddm.product_id = dds.product_id
+GROUP BY 1
+ORDER BY 2 desc
+LIMIT 1;
+````
 #### Answer
+| product_name | purchase_count |
+| ----------- | ----------- |
+| ramen       | 8          |
 <hr>
 
 ### 5. Which item was the most popular for each customer?
