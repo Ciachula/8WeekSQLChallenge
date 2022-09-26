@@ -28,4 +28,4 @@ Danny has shared 3 key datasets for this case study:
 ## Bonus Question
 - Join All The Things - Create new table  
 ## Solution
-To view my solution click [here](https://github.com/Ciachula/8weekSQLchallenge-1/blob/main/SolutionCaseStudy1.md).
+To view my solution click [here](https://github.com/Ciachula/8WeekSQLChallenge/blob/main/Danny's%20Diner%20-%20Case%20Study%201/%20SolutionCaseStudy1.md).
