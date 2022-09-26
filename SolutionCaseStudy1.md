@@ -1,6 +1,6 @@
 ## Case Study #1 - Danny's Diner - Solution
 ### 1. What is the total amount each customer spent at the restaurant?
-#### a) SQL Query
+#### SQL Query
 ````sql
 SELECT
   dds.customer_id,
@@ -11,7 +11,7 @@ JOIN dannys_diner.menu AS ddm
 GROUP BY 1
 ORDER BY 1;
 ````
-#### b) Answer
+#### Answer
 
 | customer_id | total_amount_spent |
 | ----------- | ----------- |
@@ -22,7 +22,7 @@ ORDER BY 1;
 <hr>
 
 ### 2. How many days has each customer visited the restaurant?
-#### a) SQL Query
+#### SQL Query
 ````sql
 SELECT
   dds.customer_id,
@@ -32,7 +32,7 @@ FROM dannys_diner.sales AS dds
 GROUP BY 1
 ORDER BY 1;
 ````
-#### b) Answer
+#### Answer
 | customer_id | days_visited |
 | ----------- | ----------- |
 | A           | 4          |
@@ -41,7 +41,7 @@ ORDER BY 1;
 <hr>
 
 ### 3. What was the first item from the menu purchased by each customer?
-#### a) SQL Query
+#### SQL Query
 ````sql
 -- Temporary table for new column based on order date
 WITH temp_table AS (
@@ -64,7 +64,7 @@ FROM temp_table
 WHERE rank = 1
 GROUP BY 1, 2;
 ````
-#### b) Answer
+#### Answer
 
 | customer_id | product_name |
 | ----------- | ----------- |
@@ -95,7 +95,34 @@ LIMIT 1;
 
 ### 5. Which item was the most popular for each customer?
 #### SQL Query
+````sql
+WITH temp_table AS (
+
+SELECT
+  	dds.customer_id,
+	ddm.product_name,
+  	count(ddm.product_id) as order_count,
+  	DENSE_RANK() OVER(PARTITION BY dds.customer_id 
+	ORDER BY count(dds.customer_id) DESC) as rank
+FROM dannys_diner.menu as ddm
+JOIN dannys_diner.sales as dds
+ON ddm.product_id = dds.product_id
+GROUP BY 1, 2
+)
+
+SELECT customer_id, product_name, order_count
+FROM temp_table
+WHERE rank = 1;
+````
 #### Answer
+| customer_id | product_name | order_count |
+| ----------- | ----------- | ----------- |
+| A           | ramen          |3	|
+| B           | ramen          |2	| 
+| B           | curry          |2	|
+| B           | sushi          |2	|
+| C           | ramen          |3	|
+
 <hr>
 
 ### 6. Which item was purchased first by the customer after they became a member?
