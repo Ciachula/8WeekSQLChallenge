@@ -196,7 +196,32 @@ ORDER BY 1;
 
 ### 8. What is the total items and amount spent for each member before they became a member?
 #### SQL Query
+````sql
+WITH temp_table AS (
+
+SELECT
+  	dds.customer_id,
+	ddm2.join_date,
+  	dds.order_date,
+	dds.product_id
+FROM dannys_diner.sales as dds
+JOIN dannys_diner.members as ddm2
+ON ddm2.customer_id = dds.customer_id
+WHERE ddm2.join_date > dds.order_date
+  )
+  
+SELECT tt.customer_id, count(distinct(ddm.product_name)) as total_items, sum(ddm.price) as amount
+FROM temp_table as tt
+JOIN dannys_diner.menu as ddm
+ON tt.product_id = ddm.product_id
+GROUP BY 1
+ORDER BY 1;
+````
 #### Answer
+| customer_id | total_items | amount |
+| ----------- | ----------- | ----------- |
+| A           | 2  | 25	|
+| B           | 2  | 40 | 
 <hr>
 
 ### 9. If each $1 spent equates to 10 points and sushi has a 2x points multiplier - how many points would each customer have?
