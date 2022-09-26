@@ -79,9 +79,9 @@ GROUP BY 1, 2;
 ````sql
 SELECT
   	ddm.product_name,
-  	count(dds.product_id) as purchase_count
-FROM dannys_diner.menu as ddm
-JOIN dannys_diner.sales as dds
+  	count(dds.product_id) AS purchase_count
+FROM dannys_diner.menu AS ddm
+JOIN dannys_diner.sales AS dds
 ON ddm.product_id = dds.product_id
 GROUP BY 1
 ORDER BY 2 desc
@@ -103,9 +103,9 @@ SELECT
 	ddm.product_name,
   	count(ddm.product_id) as order_count,
   	DENSE_RANK() OVER(PARTITION BY dds.customer_id 
-	ORDER BY count(dds.customer_id) DESC) as rank
-FROM dannys_diner.menu as ddm
-JOIN dannys_diner.sales as dds
+	ORDER BY count(dds.customer_id) DESC) AS rank
+FROM dannys_diner.menu AS ddm
+JOIN dannys_diner.sales AS dds
 ON ddm.product_id = dds.product_id
 GROUP BY 1, 2
 )
@@ -136,17 +136,17 @@ SELECT
   	dds.order_date,
 	dds.product_id,
 	DENSE_RANK() OVER(PARTITION BY dds.customer_id 
-    ORDER BY dds.order_date) as rank
-FROM dannys_diner.sales as dds
-JOIN dannys_diner.members as ddm2
+    ORDER BY dds.order_date) AS rank
+FROM dannys_diner.sales AS dds
+JOIN dannys_diner.members AS ddm2
 ON ddm2.customer_id = dds.customer_id
 WHERE dds.order_date >= ddm2.join_date
 
   )
   
 SELECT tt.customer_id, tt.order_date, ddm.product_name
-FROM temp_table as tt
-JOIN dannys_diner.menu as ddm
+FROM temp_table AS tt
+JOIN dannys_diner.menu AS ddm
 ON tt.product_id = ddm.product_id
 WHERE rank = 1
 ORDER BY 1;
@@ -172,16 +172,16 @@ SELECT
   	dds.order_date,
 	dds.product_id,
   	DENSE_RANK() OVER(PARTITION BY dds.customer_id 
-    ORDER BY dds.order_date DESC) as rank
-FROM dannys_diner.sales as dds
-JOIN dannys_diner.members as ddm2
+    ORDER BY dds.order_date DESC) AS rank
+FROM dannys_diner.sales AS dds
+JOIN dannys_diner.members AS ddm2
 ON ddm2.customer_id = dds.customer_id
 WHERE ddm2.join_date > dds.order_date
   )
   
 SELECT tt.customer_id, tt.order_date, ddm.product_name
-FROM temp_table as tt
-JOIN dannys_diner.menu as ddm
+FROM temp_table AS tt
+JOIN dannys_diner.menu AS ddm
 ON tt.product_id = ddm.product_id
 WHERE rank = 1
 ORDER BY 1;
@@ -210,9 +210,9 @@ ON ddm2.customer_id = dds.customer_id
 WHERE ddm2.join_date > dds.order_date
   )
   
-SELECT tt.customer_id, count(distinct(ddm.product_name)) as total_items, sum(ddm.price) as amount
-FROM temp_table as tt
-JOIN dannys_diner.menu as ddm
+SELECT tt.customer_id, COUNT(DISTINCT(ddm.product_name)) AS total_items, SUM(ddm.price) AS amount
+FROM temp_table AS tt
+JOIN dannys_diner.menu AS ddm
 ON tt.product_id = ddm.product_id
 GROUP BY 1
 ORDER BY 1;
