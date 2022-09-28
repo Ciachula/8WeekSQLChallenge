@@ -115,8 +115,34 @@ FROM pizza_count_cte;
 | 3       |   
 ### 7. For each customer, how many delivered pizzas had at least 1 change and how many had no changes?
 #### SQL Query
-
+--#SQL_SERVER
+````sql
+SELECT 
+  prco.customer_id,
+  SUM(
+    CASE WHEN prco.exclusions <> ' ' OR prco.extras <> ' ' THEN 1
+    ELSE 0
+    END) AS at_least_1_change,
+  SUM(
+    CASE WHEN prco.exclusions = ' ' AND prco.extras = ' ' THEN 1 
+    ELSE 0
+    END) AS no_change
+FROM pizza_runner.customer_orders AS prco
+JOIN pizza_runner.runner_orders AS prro
+  ON prco.order_id = prro.order_id
+WHERE prro.distance != 0
+GROUP BY prco.customer_id
+ORDER BY prco.customer_id;
+````
 #### Answer
+
+| customer_id| at_least_1_change | no_change |
+|------------| ----------- | ----------- |
+| 101        | 0  | 2          |
+| 102        | 0  | 3          |
+| 103        | 3  | 0          |
+| 104        | 2  | 1          |
+| 105        | 1  | 0          |
 
 ### 8. How many pizzas were delivered that had both exclusions and extras?
 #### SQL Query
