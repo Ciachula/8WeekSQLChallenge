@@ -45,8 +45,23 @@ ORDER BY 1;
 
 ### 4. How many of each type of pizza was delivered?
 #### SQL Query
-
+````sql
+SELECT prpn.pizza_name,
+	COUNT(prpn.pizza_id) AS successful_pizza_orders
+FROM pizza_runner.pizza_names AS prpn
+JOIN pizza_runner.customer_orders AS prco
+ON prco.pizza_id = prpn. pizza_id
+JOIN pizza_runner.runner_orders AS prro
+ON prco.order_id = prro.order_id
+WHERE prro.pickup_time IS NOT NULL
+GROUP BY 1
+ORDER BY 1;
+````
 #### Answer
+| pizza_name | successful_pizza_orders |
+| ----------- | ----------- |
+| Meatlovers  | 9          |
+| Vegetarian  | 3          |
 
 ### 5. How many Vegetarian and Meatlovers were ordered by each customer?
 #### SQL Query
