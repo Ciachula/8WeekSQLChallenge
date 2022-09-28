@@ -89,21 +89,30 @@ ORDER BY 1;
 |   104     | Meatlovers  | 3          |
 |  105      | Vegetarian  | 1          |
 
-customer_id	pizza_name	successful_pizza_orders
-101	Meatlovers	2
-101	Vegetarian	1
-102	Meatlovers	2
-102	Vegetarian	1
-103	Meatlovers	3
-103	Vegetarian	1
-104	Meatlovers	3
-105	Vegetarian	1
 
 ### 6. What was the maximum number of pizzas delivered in a single order?
 #### SQL Query
+````sql
+WITH pizza_count_cte AS
+(
+  SELECT 
+    prco.order_id, 
+    COUNT(prco.pizza_id) AS pizza_per_order
+  FROM pizza_runner.customer_orders AS prco
+  JOIN pizza_runner.runner_orders AS prro
+    ON prco.order_id = prro.order_id
+  WHERE prro.distance IS NOT NULL
+  GROUP BY prco.order_id
+)
 
+SELECT 
+  MAX(pizza_per_order) AS pizza_count
+FROM pizza_count_cte;
+````
 #### Answer
-
+| pizza_count| 
+|------------| 
+| 3       |   
 ### 7. For each customer, how many delivered pizzas had at least 1 change and how many had no changes?
 #### SQL Query
 
