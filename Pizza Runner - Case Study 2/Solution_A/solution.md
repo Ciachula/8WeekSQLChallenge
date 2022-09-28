@@ -65,8 +65,39 @@ ORDER BY 1;
 
 ### 5. How many Vegetarian and Meatlovers were ordered by each customer?
 #### SQL Query
-
+````sql
+SELECT  prco.customer_id,
+		prpn.pizza_name,
+		COUNT(prpn.pizza_id) AS successful_pizza_orders
+FROM pizza_runner.pizza_names AS prpn
+JOIN pizza_runner.customer_orders AS prco
+ON prco.pizza_id = prpn. pizza_id
+JOIN pizza_runner.runner_orders AS prro
+ON prco.order_id = prro.order_id
+GROUP BY 1, 2
+ORDER BY 1;
+````
 #### Answer
+| customer_id| pizza_name | successful_pizza_orders |
+|------------| ----------- | ----------- |
+| 101        | Meatlovers  | 2          |
+| 101        | Vegetarian  | 1          |
+| 102       | Meatlovers  | 2          |
+| 102       | Vegetarian  | 1          |
+|  103      | Meatlovers  | 3          |
+|  103      | Vegetarian  | 1          |
+|   104     | Meatlovers  | 3          |
+|  105      | Vegetarian  | 1          |
+
+customer_id	pizza_name	successful_pizza_orders
+101	Meatlovers	2
+101	Vegetarian	1
+102	Meatlovers	2
+102	Vegetarian	1
+103	Meatlovers	3
+103	Vegetarian	1
+104	Meatlovers	3
+105	Vegetarian	1
 
 ### 6. What was the maximum number of pizzas delivered in a single order?
 #### SQL Query
