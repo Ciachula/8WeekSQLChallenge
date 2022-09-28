@@ -15,19 +15,33 @@ FROM pizza_runner.customer_orders AS prco
 
 ### 2. How many unique customer orders were made?
 #### SQL Query
-
+````sql
+SELECT COUNT(DISTINCT prco.order_id) AS unique_order_amount
+FROM pizza_runner.customer_orders AS prco
+````
 #### Answer
 
-| customer_id | total_amount_spent |
-| ----------- | ----------- |
-| A           | 76          |
-| B           | 74          |
-| C           | 36          |
+| unique_order_amount | 
+| ----------- | 
+| 10           |
 
 ### 3. How many successful orders were delivered by each runner?
 #### SQL Query
-
+````sql
+SELECT prro.runner_id,
+	COUNT(prro.order_id) as successful_orders
+FROM pizza_runner.runner_orders AS prro
+WHERE prro.pickup_time IS NOT NULL
+GROUP BY 1
+ORDER BY 1;
+````
 #### Answer
+
+| runner_id | successful_orders |
+| ----------- | ----------- |
+| 1           | 4          |
+| 2           | 3          |
+| 3           | 1          |
 
 ### 4. How many of each type of pizza was delivered?
 #### SQL Query
