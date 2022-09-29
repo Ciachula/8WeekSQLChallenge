@@ -166,11 +166,13 @@ WHERE prro.distance >= 1
 | 1        | 
 ### 9. What was the total volume of pizzas ordered for each hour of the day?
 #### SQL Query
+````sql
 SELECT 
   DATEPART(HOUR, [order_time]) AS hour_of_day, 
   COUNT(order_id) AS pizza_count
 FROM pizza_runner.customer_orders 
 GROUP BY DATEPART(HOUR, [order_time]);
+````
 #### Answer
 | hour_of_day | pizza_count |
 | ----------- | ----------- |
