@@ -115,8 +115,9 @@ FROM pizza_count_cte;
 | 3       |   
 ### 7. For each customer, how many delivered pizzas had at least 1 change and how many had no changes?
 #### SQL Query
---#SQL_SERVER
+
 ````sql
+--#SQL_SERVER
 SELECT 
   prco.customer_id,
   SUM(
@@ -146,15 +147,53 @@ ORDER BY prco.customer_id;
 
 ### 8. How many pizzas were delivered that had both exclusions and extras?
 #### SQL Query
-
+````sql
+SELECT  
+  SUM(
+    CASE WHEN exclusions IS NOT NULL AND extras IS NOT NULL THEN 1
+    ELSE 0
+    END) AS pizza_count_w_exclusions_extras
+FROM pizza_runner.customer_orders AS prco
+JOIN pizza_runner.runner_orders AS prro
+  ON prco.order_id = prro.order_id
+WHERE prro.distance >= 1 
+  AND exclusions <> ' ' 
+  AND extras <> ' ';
+````
 #### Answer
-
+| pizza_count_w_exclusions_extras| 
+|------------| 
+| 1        | 
 ### 9. What was the total volume of pizzas ordered for each hour of the day?
 #### SQL Query
-
+SELECT 
+  DATEPART(HOUR, [order_time]) AS hour_of_day, 
+  COUNT(order_id) AS pizza_count
+FROM pizza_runner.customer_orders 
+GROUP BY DATEPART(HOUR, [order_time]);
 #### Answer
-
+| hour_of_day | pizza_count |
+| ----------- | ----------- |
+| 11  | 1          |
+| 12  | 2          |
+| 13  | 3          |
+| 18  | 3          |
+| 19  | 1          |
+| 21  | 3          |
+| 23  | 1          |
 ### 10. What was the volume of orders for each day of the week?
 #### SQL Query
-
+````sql
+SELECT 
+  FORMAT(DATEADD(DAY, 2, order_time),'dddd') AS day_of_week, 
+  COUNT(order_id) AS total_pizzas_ordered
+FROM pizza_runner.customer_orders
+GROUP BY FORMAT(DATEADD(DAY, 2, order_time),'dddd');
+````
 #### Answer
+| day_of_week | total_pizzas_ordered |
+| ----------- | ----------- |
+| Friday  | 5          |
+| Monday  | 5          |
+| Saturday  | 3          |
+| Sunday  | 1         |
