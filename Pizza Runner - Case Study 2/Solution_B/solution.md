@@ -78,7 +78,7 @@ GROUP BY pizza_order;
 | 3           | 30         |
 <hr>
 
-### 4. What was the average distance travelled for each customer?
+### 4. Is there any relationship between the number of pizzas and how long the order takes to prepare?
 #### SQL Query
 ````sql
 SELECT 
@@ -100,6 +100,8 @@ ORDER BY 1;
 | 103           | 4         | 23
 | 104           | 3        | 10
 | 105           | 2        | 25
+
+- With more pizza ordered the avg_distance is increasing
 <hr>
 
 ### 5. What was the difference between the longest and shortest delivery times for all orders?
