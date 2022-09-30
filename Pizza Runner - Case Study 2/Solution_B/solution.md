@@ -143,6 +143,18 @@ ORDER BY prco.runner_id,prco.customer_id ;
 
 ### 7. What is the successful delivery percentage for each runner?
 #### SQL Query
-
+````sql
+SELECT 
+  prro.runner_id, 
+  ROUND(100 * SUM(
+    CASE WHEN distance = 0 THEN 0
+    ELSE 1 END) / COUNT(*), 0) AS success_perc
+FROM pizza_runner.runner_orders as prro
+GROUP BY prro.runner_id;
+````
 #### Answer
-
+| runner_id | success_perc |
+| ----------- | ----------- |
+| 1           | 100          |
+| 2           | 75          |
+| 3           | 50          |
