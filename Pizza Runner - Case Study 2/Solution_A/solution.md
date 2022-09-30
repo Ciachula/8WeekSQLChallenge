@@ -1,4 +1,4 @@
-## Case Study #1 - Danny's Diner - Solution
+## Case Study #2 - Pizza Runner - Solution A
 ### 1. How many pizzas were ordered?
 #### SQL Query
 ````sql
