@@ -47,10 +47,35 @@ WHERE pickup_minutes > 1;
 
 ### 3. Is there any relationship between the number of pizzas and how long the order takes to prepare?
 #### SQL Query
+````sql
+WITH prep_time_cte AS
+(
+  SELECT 
+    prco.order_id, 
+    COUNT(prco.order_id) AS pizza_order, 
+    prco.order_time, 
+    prro.pickup_time, 
+    DATEDIFF(MINUTE, prco.order_time, prro.pickup_time) AS prep_time_minutes
+  FROM pizza_runner.customer_orders AS prco
+  JOIN pizza_runner.runner_orders AS prro
+    ON prco.order_id = prro.order_id
+  WHERE prro.distance != 0
+  GROUP BY prco.order_id, prco.order_time, prro.pickup_time
+)
 
-
+SELECT 
+  pizza_order, 
+  AVG(prep_time_minutes) AS avg_prep_time_minutes
+FROM prep_time_cte
+WHERE prep_time_minutes > 1
+GROUP BY pizza_order;
+````
 #### Answer
-
+| pizza_order | avg_prep_time_minutes |
+| ----------- | ----------- |
+| 1           | 12          |
+| 2           | 16         |
+| 3           | 30         |
 <hr>
 
 ### 4. What was the average distance travelled for each customer?
