@@ -80,9 +80,26 @@ GROUP BY pizza_order;
 
 ### 4. What was the average distance travelled for each customer?
 #### SQL Query
-
+````sql
+SELECT 
+	prco.customer_id, 
+	SUM(prco.pizza_id) AS pizza_sum,
+	AVG(prro.distance) AS avg_distance
+FROM pizza_runner.customer_orders as prco
+JOIN pizza_runner.runner_orders as prro 
+ON prco.order_id = prro.order_id
+WHERE prro.distance IS NOT NULL
+GROUP BY 1
+ORDER BY 1;
+````
 #### Answer
-
+| customer_id | pizza_sum |avg_distance |
+| ----------- | ----------- | ----------- |
+| 101           | 2          |20
+| 102           | 4   | 16,(3)
+| 103           | 4         | 23
+| 104           | 3        | 10
+| 105           | 2        | 25
 <hr>
 
 ### 5. What was the difference between the longest and shortest delivery times for all orders?
