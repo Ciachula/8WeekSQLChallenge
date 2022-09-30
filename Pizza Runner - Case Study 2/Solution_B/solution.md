@@ -124,7 +124,7 @@ FROM pizza_runner.runner_orders AS prro
 JOIN pizza_runner.customer_orders AS prco
   ON prro.order_id = prco.order_id
 WHERE distance IS NOT NULL
-GROUP BY prro.runner_id, prco.customer_id, prco.order_id, prro.distance, prro.duration
+GROUP BY prro.runner_id, prco.customer_id, prco.order_id
 ORDER BY prco.runner_id,prco.customer_id ;
 
 ````
