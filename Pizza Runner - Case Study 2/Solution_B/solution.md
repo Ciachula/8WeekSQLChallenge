@@ -106,9 +106,15 @@ ORDER BY 1;
 
 ### 5. What was the difference between the longest and shortest delivery times for all orders?
 #### SQL Query
-
+````sql
+SELECT MAX(duration::NUMERIC) - MIN(duration::NUMERIC) AS delivery_time_difference
+FROM pizza_runner.runner_orders
+where duration not like ' ';
+````
 #### Answer
-
+| delivery_time_difference | 
+| ----------- | 
+| 30 | 
 <hr>
 
 ### 6. What was the average speed for each runner for each delivery and do you notice any trend for these values?
@@ -129,16 +135,16 @@ ORDER BY prco.runner_id,prco.customer_id ;
 
 ````
 #### Answer
-| runner_id | customer_id |order_id |pizza_count |avg_speed |
-| ----------- | ----------- | ----------- |----------- |----------- |
-| 1           | 101       |  1	  |	 1     |  37,5 |
-| 1           | 101       |  2	  |	 1     |  44,44 |
-| 1           | 102       | 3	  |	 2     |  40,2 |
-| 1           | 104    	  | 10 |   2 |  60  |
-| 2           | 102       | 8	  |	1      |  93,6|
-| 2           | 103       |4 	  |	3      |  	35,1|
-| 2           | 105       |7 	  |	1      |  	60  |
-| 3           | 104       |5 	  |	1      |  	40  |
+| runner_id | customer_id |order_id |pizza_count | distance |avg_speed |
+| ----------- | ----------- | ----------- |----------- |----------- |----------- |
+| 1           | 101       |  1	  |	 1     | 20|  37,5 |
+| 1           | 101       |  2	  |	 1     |  20|  44,44 |
+| 1           | 102       | 3	  |	 2     |13,4 |  40,2 |
+| 1           | 104    	  | 10 |   2           | 10| 60  |
+| 2           | 102       | 8	  |	1      | 23,4|  93,6|
+| 2           | 103       |4 	  |	3      | 23,4|  	35,1|
+| 2           | 105       |7 	  |	1      | 25|   	60  |
+| 3           | 104       |5 	  |	1      | 10|   	40  |
 <hr>
 
 ### 7. What is the successful delivery percentage for each runner?
