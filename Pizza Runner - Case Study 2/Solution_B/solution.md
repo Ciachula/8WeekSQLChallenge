@@ -113,9 +113,32 @@ ORDER BY 1;
 
 ### 6. What was the average speed for each runner for each delivery and do you notice any trend for these values?
 #### SQL Query
+````sql
+SELECT 
+  prro.runner_id, 
+  prco.customer_id, 
+  prco.order_id, 
+  COUNT(prco.order_id) AS pizza_count,
+  ROUND((prro.distance/prro.duration * 60), 2) AS avg_speed
+FROM pizza_runner.runner_orders AS prro
+JOIN pizza_runner.customer_orders AS prco
+  ON prro.order_id = prco.order_id
+WHERE distance IS NOT NULL
+GROUP BY prro.runner_id, prco.customer_id, prco.order_id, prro.distance, prro.duration
+ORDER BY prco.order_id;
 
+````
 #### Answer
-
+| runner_id | customer_id |order_id |pizza_count |avg_speed |
+| ----------- | ----------- | ----------- |----------- |----------- |
+| 1           | 101       |  1	  |	 1     |  37,5 |
+| 1           | 101       |  2	  |	 1     |  44,44 |
+| 1           | 102       | 3	  |	 2     |  40,2 |
+| 1           | 104    	  | 10 |   2 |  60  |
+| 2           | 102       | 8	  |	1      |  93,6|
+| 2           | 103       |4 	  |	3      |  	35,1|
+| 2           | 105       |7 	  |	1      |  	60  |
+| 3           | 104       |5 	  |	1      |  	40  |
 <hr>
 
 ### 7. What is the successful delivery percentage for each runner?
