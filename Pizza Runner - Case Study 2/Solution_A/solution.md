@@ -24,6 +24,7 @@ FROM pizza_runner.customer_orders AS prco
 | unique_order_amount | 
 | ----------- | 
 | 10           |
+<hr>
 
 ### 3. How many successful orders were delivered by each runner?
 #### SQL Query
@@ -42,6 +43,7 @@ ORDER BY 1;
 | 1           | 4          |
 | 2           | 3          |
 | 3           | 1          |
+<hr>
 
 ### 4. How many of each type of pizza was delivered?
 #### SQL Query
@@ -62,6 +64,7 @@ ORDER BY 1;
 | ----------- | ----------- |
 | Meatlovers  | 9          |
 | Vegetarian  | 3          |
+<hr>
 
 ### 5. How many Vegetarian and Meatlovers were ordered by each customer?
 #### SQL Query
@@ -88,7 +91,7 @@ ORDER BY 1;
 |  103      | Vegetarian  | 1          |
 |   104     | Meatlovers  | 3          |
 |  105      | Vegetarian  | 1          |
-
+<hr>
 
 ### 6. What was the maximum number of pizzas delivered in a single order?
 #### SQL Query
@@ -113,6 +116,8 @@ FROM pizza_count_cte;
 | pizza_count| 
 |------------| 
 | 3       |   
+<hr>
+
 ### 7. For each customer, how many delivered pizzas had at least 1 change and how many had no changes?
 #### SQL Query
 
@@ -144,6 +149,7 @@ ORDER BY prco.customer_id;
 | 103        | 3  | 0          |
 | 104        | 2  | 1          |
 | 105        | 1  | 0          |
+<hr>
 
 ### 8. How many pizzas were delivered that had both exclusions and extras?
 #### SQL Query
@@ -164,6 +170,8 @@ WHERE prro.distance >= 1
 | pizza_count_w_exclusions_extras| 
 |------------| 
 | 1        | 
+<hr>
+
 ### 9. What was the total volume of pizzas ordered for each hour of the day?
 #### SQL Query
 ````sql
@@ -183,6 +191,8 @@ GROUP BY DATEPART(HOUR, [order_time]);
 | 19  | 1          |
 | 21  | 3          |
 | 23  | 1          |
+<hr>
+
 ### 10. What was the volume of orders for each day of the week?
 #### SQL Query
 ````sql
